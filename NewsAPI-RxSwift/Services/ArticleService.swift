@@ -16,17 +16,20 @@ class ArticleService {
             
             self.fetchNews { error, articles in
                 if let error = error {
+                    //onError - 오류가 있음을 알리고 중간에서 종류시킬 수 있는 기능, observable 구독자에게 오류 알림
                     observer.onError(error)
                 }
                 
                 if let articles = articles {
+                    //onNext - 구성요소를 계속 방출시킬 수 있는 기능, observable 구독자에게 데이터 전달
                     observer.onNext(articles)
                 }
                 
+                //onCompleted - 이벤트를 종료시킬 수 있는 기능, observable 구독자에게 완료되었음을 알림
                 observer.onCompleted()
             }
             
-            //Disposables 는 observer 가 필요 없어졌을 때 메모리의 할당을 지워줌
+            //Disposables - observer 가 필요 없어졌을 때 메모리의 할당을 지워줌
             return Disposables.create()
         }
     }
