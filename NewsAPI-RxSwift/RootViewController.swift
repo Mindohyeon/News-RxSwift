@@ -14,6 +14,11 @@ class RootViewController: UIViewController {
     let viewModel: RootViewModel
     let disposeBag = DisposeBag()
     
+    private var articleViewModel = BehaviorRelay<[ArticleViewModel]>(value: [])
+    var articleViewModelObserver: Observable<[ArticleViewModel]> {
+        return articleViewModel.asObservable()
+    }
+    
     
     init(viewModel: RootViewModel) {
         self.viewModel = viewModel
@@ -36,7 +41,7 @@ class RootViewController: UIViewController {
     }
     
     func fetchArticles() {
-
+        viewModel.fetchArticles()
     }
 }
 
