@@ -48,9 +48,10 @@ class RootViewController: UIViewController {
     }
     
     func subscribe() {
-        articleViewModel.subscribe(onNext: { articles in
+        self.articleViewModelObserver.subscribe(onNext: { articles in
+            //collectionView raload
             print(articles)
         }).disposed(by: disposeBag)
-    }
+     }
 }
 

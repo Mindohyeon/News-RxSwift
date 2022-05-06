@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ArticleViewModel {
+struct ArticleViewModel {
     private let article: Article
     
     var imageUrl: String? {
