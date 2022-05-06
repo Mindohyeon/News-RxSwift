@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class RootViewController: UIViewController {
     
     let viewModel: RootViewModel
+    let disposeBag = DisposeBag()
     
     init(viewModel: RootViewModel) {
         self.viewModel = viewModel
@@ -22,9 +24,19 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
         
-        // Do any additional setup after loading the view.
+        configureUI()
+        fetchArticles()
+    }
+    
+    func configureUI() {
+        view.backgroundColor = .orange
+    }
+    
+    func fetchArticles() {
+        self.viewModel.fetchArticles().subscribe(onNext: { articles in
+            print(articles)
+        }).disposed(by: disposeBag)
     }
 
 
