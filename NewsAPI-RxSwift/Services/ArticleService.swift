@@ -7,8 +7,30 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class ArticleService {
+    
+    private func fetchNews() -> Observable<[Article]> {
+        return Observable.create { (observer) -> Disposable in
+            
+            self.fetchNews { error, articles in
+                if let error = error {
+                    observer.onError(error)
+                }
+                
+                if let articles = articles {
+                    observer.onNext(articles)
+                }
+                
+                observer.onCompleted()
+            }
+            
+            //Disposables 는 observer 가 필요 없어졌을 때 메모리의 할당을 지워줌
+            return Disposables.create()
+        }
+    }
+    
     private func fetchNews(completion:@escaping((Error?, [Article]?) -> Void)) {
         let urlString = "https://newsapi.org/v2/everything?q=tesla&from=2022-04-05&sortBy=publishedAt&apiKey=593c937d5e9f4e1e9193f751d7f40c59"
         
