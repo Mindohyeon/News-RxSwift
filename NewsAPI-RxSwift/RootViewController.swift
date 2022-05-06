@@ -34,6 +34,7 @@ class RootViewController: UIViewController {
         
         configureUI()
         fetchArticles()
+        subscribe()
     }
     
     func configureUI() {
@@ -41,7 +42,15 @@ class RootViewController: UIViewController {
     }
     
     func fetchArticles() {
-        viewModel.fetchArticles()
+        viewModel.fetchArticles().subscribe(onNext: { articleViewModels in
+            self.articleViewModel.accept(articleViewModels)
+        }).disposed(by: disposeBag)
+    }
+    
+    func subscribe() {
+        articleViewModel.subscribe(onNext: { articles in
+            print(articles)
+        }).disposed(by: disposeBag)
     }
 }
 
