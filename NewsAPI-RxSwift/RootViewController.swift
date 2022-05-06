@@ -7,11 +7,18 @@
 
 import UIKit
 import RxSwift
+import RxRelay
 
 class RootViewController: UIViewController {
     
     let viewModel: RootViewModel
     let disposeBag = DisposeBag()
+    
+    private let articles = BehaviorRelay<[Article]>(value: [])
+    var articlesObserver: Observable<[Article]> {
+        return articles.asObservable()
+    }
+    
     
     init(viewModel: RootViewModel) {
         self.viewModel = viewModel
@@ -36,6 +43,7 @@ class RootViewController: UIViewController {
     func fetchArticles() {
         self.viewModel.fetchArticles().subscribe(onNext: { articles in
             print(articles)
+            self.articles.accept(articles)
         }).disposed(by: disposeBag)
     }
 

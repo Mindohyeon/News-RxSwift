@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import RxSwift
 
+
 protocol ArticleServiceProtocol {
     func fetchNews() -> Observable<[Article]>
 }
@@ -39,7 +40,7 @@ class ArticleService: ArticleServiceProtocol {
     }
     
     private func fetchNews(completion:@escaping((Error?, [Article]?) -> Void)) {
-        let urlString = "https://newsapi.org/v2/everything?q=tesla&from=2022-04-05&sortBy=publishedAt&apiKey=593c937d5e9f4e1e9193f751d7f40c59"
+        let urlString = "https://newsapi.org/v2/everything?q=tesla&from=2022-04-06&sortBy=publishedAt&apiKey=593c937d5e9f4e1e9193f751d7f40c59"
         
         guard let url = URL(string: urlString) else { return completion(NSError(domain: "dohyeon113", code: 404, userInfo: nil), nil)}
         
