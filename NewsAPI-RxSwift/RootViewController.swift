@@ -64,6 +64,7 @@ class RootViewController: UIViewController {
     func subscribe() {
         self.articleViewModelObserver.subscribe(onNext: { articles in
             //collectionView raload
+            print(articles)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
