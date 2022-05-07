@@ -56,7 +56,7 @@ class ArticlesCell: UICollectionViewCell {
             
             self.titleLabel.text = articleViewModel.title
             self.descriptionLabel.text = articleViewModel.description
-        })
+        }).disposed(by: disposeBag)
     }
     
     func configureUI() {
