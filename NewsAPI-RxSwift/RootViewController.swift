@@ -21,6 +21,7 @@ class RootViewController: UIViewController {
     
     private lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+        cv.backgroundColor = .systemBackground
         
         cv.delegate = self
         cv.dataSource = self
@@ -48,7 +49,14 @@ class RootViewController: UIViewController {
     }
     
     func configureUI() {
-        view.backgroundColor = .orange
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     func configureCollectionView() {
