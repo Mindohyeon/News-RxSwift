@@ -44,10 +44,15 @@ class RootViewController: UIViewController {
         configureUI()
         fetchArticles()
         subscribe()
+        configureCollectionView()
     }
     
     func configureUI() {
         view.backgroundColor = .orange
+    }
+    
+    func configureCollectionView() {
+        self.collectionView.register(ArticlesCell.self, forCellWithReuseIdentifier: "cell")
     }
     
     func fetchArticles() {
@@ -59,7 +64,9 @@ class RootViewController: UIViewController {
     func subscribe() {
         self.articleViewModelObserver.subscribe(onNext: { articles in
             //collectionView raload
-            print(articles)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }).disposed(by: disposeBag)
      }
 }
@@ -70,7 +77,10 @@ extension RootViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ArticlesCell
+        
+        let articleViewModel = articleViewModel.value[indexPath.row]
+        cell.viewModel.onNext(articleViewModel)
         
         return cell
     }
