@@ -21,6 +21,7 @@
 		DF5C66EB2824D39F0002A086 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C66EA2824D39F0002A086 /* RootViewModel.swift */; };
 		DF5C66ED28255B180002A086 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C66EC28255B180002A086 /* ArticleViewModel.swift */; };
 		DF5C66F028269FD90002A086 /* ArticlesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C66EF28269FD90002A086 /* ArticlesCell.swift */; };
+		DF5C66F32826A5A60002A086 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DF5C66F22826A5A60002A086 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 				DF5C66E42824CBEC0002A086 /* RxCocoa in Frameworks */,
 				DF5C66E82824CBEC0002A086 /* RxSwift in Frameworks */,
 				DF5C66E12824139B0002A086 /* Alamofire in Frameworks */,
+				DF5C66F32826A5A60002A086 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +142,7 @@
 				DF5C66E32824CBEC0002A086 /* RxCocoa */,
 				DF5C66E52824CBEC0002A086 /* RxRelay */,
 				DF5C66E72824CBEC0002A086 /* RxSwift */,
+				DF5C66F22826A5A60002A086 /* SDWebImage */,
 			);
 			productName = "NewsAPI-RxSwift";
 			productReference = DF5C66C228240DBB0002A086 /* NewsAPI-RxSwift.app */;
@@ -172,6 +175,7 @@
 			packageReferences = (
 				DF5C66DF2824139B0002A086 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				DF5C66E22824CBEC0002A086 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				DF5C66F12826A5A60002A086 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = DF5C66C328240DBB0002A086 /* Products */;
 			projectDirPath = "";
@@ -432,6 +436,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		DF5C66F12826A5A60002A086 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -454,6 +466,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DF5C66E22824CBEC0002A086 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		DF5C66F22826A5A60002A086 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF5C66F12826A5A60002A086 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

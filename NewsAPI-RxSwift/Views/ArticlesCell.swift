@@ -6,9 +6,11 @@
 //
 import UIKit
 import RxSwift
+import SDWebImage
 
 class ArticlesCell: UICollectionViewCell {
     var viewModel = PublishSubject<ArticleViewModel>()
+    let disposeBag = DisposeBag()
     
     lazy var imageView: UIImageView = {
         let iv = UIImageView()
@@ -39,10 +41,22 @@ class ArticlesCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
+        subscribe()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func subscribe() {
+        self.viewModel.subscribe(onNext: { articleViewModel in
+            if let urlString = articleViewModel.imageUrl {
+                self.imageView.sd_setImage(with: URL(string: urlString), completed: nil)
+            }
+            
+            self.titleLabel.text = articleViewModel.title
+            self.descriptionLabel.text = articleViewModel.description
+        })
     }
     
     func configureUI() {
