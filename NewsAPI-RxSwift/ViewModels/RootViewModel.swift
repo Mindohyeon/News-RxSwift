@@ -18,6 +18,6 @@ class RootViewModel {
     }
     
     func fetchArticles() -> Observable<[ArticleViewModel]> {
-        articleService.fetchNews().map{ $0.map { ArticleViewModel(article: $0) } }
+        articleService.fetchNews().map { $0.map { ArticleViewModel(article: $0) } }
     }
 }
