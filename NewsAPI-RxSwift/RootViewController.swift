@@ -88,6 +88,8 @@ extension RootViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ArticlesCell
         
+        cell.imageView.image = nil
+        
         let articleViewModel = articleViewModel.value[indexPath.row]
         cell.viewModel.onNext(articleViewModel)
         
