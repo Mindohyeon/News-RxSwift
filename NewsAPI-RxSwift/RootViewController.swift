@@ -51,6 +51,8 @@ class RootViewController: UIViewController {
     func configureUI() {
         view.backgroundColor = .systemBackground
         
+        self.title = viewModel.title
+        
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true

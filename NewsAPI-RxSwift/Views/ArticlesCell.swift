@@ -9,6 +9,8 @@ import RxSwift
 import SDWebImage
 
 class ArticlesCell: UICollectionViewCell {
+    
+    //PublishSubject 는 데이터를 전달받아서 subscriber 들에게 뿌려주는 역할을 한다.
     var viewModel = PublishSubject<ArticleViewModel>()
     let disposeBag = DisposeBag()
     
